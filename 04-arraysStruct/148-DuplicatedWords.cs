@@ -1,9 +1,9 @@
-// Finding a word in a sentence
+// Finding duplicate words
 // Adrián Navarro Gabino
 
 using System;
 
-public class WordInText
+public class DuplicatedWords
 {
     public static void Main()
     {
