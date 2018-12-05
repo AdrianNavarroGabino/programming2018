@@ -6,3 +6,11 @@ C:\Users\adnag\Desktop\18-19\Programación 18-19\Bubble Bobble\BubbleBobble\Bubb
 C:\Users\adnag\Desktop\18-19\Programación 18-19\Bubble Bobble\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.exe
 C:\Users\adnag\Desktop\18-19\Programación 18-19\Bubble Bobble\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.pdb
 C:\Users\adnag\Desktop\18-19\Programación 18-19\Bubble Bobble\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.csproj.CopyComplete
+C:\Users\Adrián Navarro\Downloads\BubbleBobble\BubbleBobble\bin\Debug\BubbleBobble.exe.config
+C:\Users\Adrián Navarro\Downloads\BubbleBobble\BubbleBobble\bin\Debug\BubbleBobble.exe
+C:\Users\Adrián Navarro\Downloads\BubbleBobble\BubbleBobble\bin\Debug\BubbleBobble.pdb
+C:\Users\Adrián Navarro\Downloads\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.csprojAssemblyReference.cache
+C:\Users\Adrián Navarro\Downloads\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.csproj.CoreCompileInputs.cache
+C:\Users\Adrián Navarro\Downloads\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.csproj.CopyComplete
+C:\Users\Adrián Navarro\Downloads\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.exe
+C:\Users\Adrián Navarro\Downloads\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.pdb
