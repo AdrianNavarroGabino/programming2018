@@ -11,36 +11,66 @@ namespace BubbleBobble
 {
     class Game
     {
-        static Image player = new Image("data/player.png");
-        static int playerX = 50;
-        static int playerY = 120;
-        static int playerSpeed = 8;
-        static int playerWidth = 32;
-        static int playerHeight = 64;
+        struct typeEnemy
+        {
+            public int x;
+            public int y;
+            public int speed;
+        }
 
-        static Random rnd = new Random();
-        static int numEnemies = 2;
-        static int[] enemyX = new int[numEnemies];
-        static int[] enemyY = new int[numEnemies];
-        static int[] enemySpeedX = new int[numEnemies];
+        static bool fullScreen;
 
-        static int enemyWidth = 64;
-        static int enemyHeight = 64;
-        static Image enemy = new Image("data/enemy.png");
+        static Image player;
+        static int playerX;
+        static int playerY;
+        static int playerSpeed;
+        static int playerWidth;
+        static int playerHeight;
 
-        static bool finished = false;
+        static int numEnemies;
+        static Image enemy;
+        static int enemyWidth;
+        static int enemyHeight;
+        static typeEnemy[] enemies;
+
+        static bool finished;
+
+        
         public static void Init()
         {
+            fullScreen = false;
+
+            SdlHardware.Init(1024, 768, 24, fullScreen);
+
+            player = new Image("data/player.png");
+            playerX = 50;
+            playerY = 120;
+            playerSpeed = 8;
+            playerWidth = 32;
+            playerHeight = 64;
+
+            numEnemies = 2;
+            enemies = new typeEnemy[numEnemies];
+            
+            enemy = new Image("data/enemy.png");
+            enemyWidth = 64;
+            enemyHeight = 64;
+
+            finished = false;
+
+            Random rnd = new Random();
             for (int i = 0; i < numEnemies; i++)
             {
-                enemyX[i] = rnd.Next(200, 800);
-                enemyY[i] = rnd.Next(50, 600);
-                enemySpeedX[i] = rnd.Next(1, 5);
+                enemies[i].x = rnd.Next(200, 800);
+                enemies[i].y = rnd.Next(50, 600);
+                enemies[i].speed = rnd.Next(1, 5);
             }
         }
 
-        public static void DrawElements(Font font18)
+        public static void UpdateScreen()
         {
+            Font font18 = new Font("data/Joystix.ttf", 18);
+
             SdlHardware.ClearScreen();
 
             SdlHardware.WriteHiddenText("Score: ",
@@ -50,53 +80,61 @@ namespace BubbleBobble
 
             SdlHardware.DrawHiddenImage(player, playerX, playerY);
             for (int i = 0; i < numEnemies; i++)
-                SdlHardware.DrawHiddenImage(enemy, enemyX[i], enemyY[i]);
+                SdlHardware.DrawHiddenImage(enemy, enemies[i].x, enemies[i].y);
             SdlHardware.ShowHiddenScreen();
         }
 
-        public static void ProcessUserInput()
+        public static void CheckUserInput()
         {
             if (SdlHardware.KeyPressed(SdlHardware.KEY_RIGHT))
                 playerX += playerSpeed;
-            else if (SdlHardware.KeyPressed(SdlHardware.KEY_LEFT))
+            if (SdlHardware.KeyPressed(SdlHardware.KEY_LEFT))
                 playerX -= playerSpeed;
-            else if (SdlHardware.KeyPressed(SdlHardware.KEY_UP))
+            if (SdlHardware.KeyPressed(SdlHardware.KEY_UP))
                 playerY -= playerSpeed;
-            else if (SdlHardware.KeyPressed(SdlHardware.KEY_DOWN))
+            if (SdlHardware.KeyPressed(SdlHardware.KEY_DOWN))
                 playerY += playerSpeed;
-        }
 
-        public static void CheckGameStatus()
-        {
             if (SdlHardware.KeyPressed(SdlHardware.KEY_ESC))
                 finished = true;
         }
 
+        public static void UpdateWorld()
+        {
+            // TODO
+        }
+
+        public static void CheckGameStatus()
+        {
+            // TODO
+        }
+
         public static void PauseUntilNextFrame()
         {
-            Thread.Sleep(40);
+            SdlHardware.Pause(40);
+        }
+
+        public static void UpdateHighscore()
+        {
+            // TODO
         }
 
 
         static void Main(string[] args)
         {
-            bool fullScreen = false;
-            SdlHardware.Init(1024, 768, 24, fullScreen);
-            Font font18 = new Font("data/Joystix.ttf", 18);
-
             Init();
 
             do
             {
-                DrawElements(font18);
-
-                ProcessUserInput();
-
-                CheckGameStatus();
-
+                UpdateScreen();
+                CheckUserInput();
+                UpdateWorld();
                 PauseUntilNextFrame();
+                CheckGameStatus();
             }
             while (!finished);
+
+            UpdateHighscore();
         }
     }
 }
