@@ -2,7 +2,7 @@
 
 using System;
 
-public class QuadraticEcuation
+public class QuadraticEquation
 {
     public static void Main()
     {
