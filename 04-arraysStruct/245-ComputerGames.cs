@@ -1,5 +1,40 @@
 ﻿// Adrián Navarro Gabino
 
+/*
+Create a C# program that can store up to 10000 computer games and other 
+software. For each game, it must allow the user to store the following 
+information:
+    * Title (e.g. GranTurismo 6)
+    * Category (e.g. Racing)
+    * Platform (e.g. PS3)
+    * Year (e.g. 2013)
+    * Rating (e.g. 8.7)
+    * Comments
+The program should allow the user to perform the following operations :
+1 - Add a new game (at the end of the existing data). The title and description 
+cannot be empty. The year, if entered, must be from 1940 to 2100. The rating, 
+if entered, must be 0 to 10. No other validation must be done.
+2 - Show all the data of a certain game (chose by number o exact title, case 
+insensitive).
+3 - Show all the games of a certain platform and category. You must display the 
+record number, the title, year and rating, pausing after every 22 rows. 
+4 - Find games containing a certain text (partial search, in any text field, 
+not case sensitive). You must display the record number, the title, year and 
+rating, pausing after every 22 rows.
+5 - Update a record: ask the user for its number, display the previous value of 
+each field and allow the user to press Enter not to modify any of the data. The 
+user should be warned (but not asked again) if he enters an incorrect record 
+number. The year and rating, if entered, must be valid.
+6 - Delete a record, in the position entered by the user. He should be warned 
+(but not asked again) if he enters an incorrect record number. It should 
+display the record to be deleted and ask for confirmation before the deletion.
+7 - Sort data alphabetically, by title and (if necessary) platform.
+8 - Eliminate redundant spaces: remove trailing spaces, leading spaces and 
+duplicate spaces in description, category and platform.
+Q - Quit the application (as we do not store the information on file, data will 
+be lost). 
+*/
+
 using System;
 
 public class ComputerGames
@@ -29,7 +64,7 @@ public class ComputerGames
         const string EXIT = "Q";
 
         string option;
-        int actualGame = 0;
+        int currentGame = 0;
 
         do
         {
@@ -51,42 +86,42 @@ public class ComputerGames
             switch(option)
             {
                 case ADD:
-                    if(actualGame >= SIZE)
+                    if(currentGame >= SIZE)
                         Console.WriteLine("Database full");
                     else
                     {
-                        Console.WriteLine("Game #" + (actualGame + 1));
+                        Console.WriteLine("Game #" + (currentGame + 1));
                         do
                         {
                             Console.Write("Enter the title: ");
-                            g[actualGame].title = Console.ReadLine();
-                        } while (g[actualGame].title == "");
+                            g[currentGame].title = Console.ReadLine();
+                        } while (g[currentGame].title == "");
 
                         do
                         {
                             Console.Write("Enter the category: ");
-                            g[actualGame].category = Console.ReadLine();
-                        } while (g[actualGame].category == "");
+                            g[currentGame].category = Console.ReadLine();
+                        } while (g[currentGame].category == "");
 
                         Console.Write("Enter the platform: ");
-                        g[actualGame].platform = Console.ReadLine();
+                        g[currentGame].platform = Console.ReadLine();
 
                         do
                         {
                             Console.Write("Enter the year: ");
-                            g[actualGame].year = Convert.ToInt32(Console.ReadLine());
-                        } while (g[actualGame].year < 1940 || g[actualGame].year > 2100);
+                            g[currentGame].year = Convert.ToInt32(Console.ReadLine());
+                        } while (g[currentGame].year < 1940 || g[currentGame].year > 2100);
 
                         do
                         {
                             Console.Write("Enter the rating: ");
-                            g[actualGame].rating = Convert.ToDouble(Console.ReadLine());
-                        } while (g[actualGame].rating < 0 || g[actualGame].rating > 10);
+                            g[currentGame].rating = Convert.ToDouble(Console.ReadLine());
+                        } while (g[currentGame].rating < 0 || g[currentGame].rating > 10);
 
                         Console.WriteLine("Enter comments:");
-                        g[actualGame].comments = Console.ReadLine();
+                        g[currentGame].comments = Console.ReadLine();
 
-                        actualGame++;
+                        currentGame++;
                     }
 
                     Console.WriteLine();
@@ -110,7 +145,7 @@ public class ComputerGames
                         Console.Write("Enter the title: ");
                         string showTitle = Console.ReadLine().ToLower();
 
-                        for(int i = 0; i < actualGame; i++)
+                        for(int i = 0; i < currentGame; i++)
                         {
                             if (g[i].title.ToLower() == showTitle)
                                 showPosition = i;
@@ -123,17 +158,17 @@ public class ComputerGames
 
                     if (showPosition != -1)
                     {
-                        if (showPosition >= actualGame)
+                        if (showPosition >= currentGame)
                             Console.WriteLine("Wrong number");
                         else
                         {
-                            Console.WriteLine("Game #" + (actualGame + 1));
-                            Console.WriteLine("Title: " + g[actualGame].title);
-                            Console.WriteLine("Category: " + g[actualGame].category);
-                            Console.WriteLine("Platform: " + g[actualGame].platform);
-                            Console.WriteLine("Year: " + g[actualGame].year);
-                            Console.WriteLine("Rating: " + g[actualGame].rating);
-                            Console.WriteLine("Comments: " + g[actualGame].comments);
+                            Console.WriteLine("Game #" + (currentGame + 1));
+                            Console.WriteLine("Title: " + g[currentGame].title);
+                            Console.WriteLine("Category: " + g[currentGame].category);
+                            Console.WriteLine("Platform: " + g[currentGame].platform);
+                            Console.WriteLine("Year: " + g[currentGame].year);
+                            Console.WriteLine("Rating: " + g[currentGame].rating);
+                            Console.WriteLine("Comments: " + g[currentGame].comments);
 
                             Console.WriteLine();
                         }
@@ -150,7 +185,7 @@ public class ComputerGames
                     Console.Write("Enter category: ");
                     string showCategory = Console.ReadLine().ToLower();
 
-                    for(int i = 0; i < actualGame; i++)
+                    for(int i = 0; i < currentGame; i++)
                     {
                         if(g[i].platform.ToLower() == showPlatform && g[i].category.ToLower() == showCategory)
                         {
@@ -176,7 +211,7 @@ public class ComputerGames
                     Console.Write("Text to search: ");
                     string search = Console.ReadLine().ToLower();
 
-                    for(int i = 0; i < actualGame; i++)
+                    for(int i = 0; i < currentGame; i++)
                     {
                         if(
                                 g[i].title.ToLower().Contains(search) ||
@@ -206,7 +241,7 @@ public class ComputerGames
                     Console.Write("Enter number to modify: ");
                     int modify = Convert.ToInt32(Console.ReadLine()) - 1;
 
-                    if(modify >= actualGame)
+                    if(modify >= currentGame)
                     {
                         Console.WriteLine("Wrong number");
                     }
@@ -298,7 +333,7 @@ public class ComputerGames
                     Console.Write("Enter the number to delete: ");
                     int delete = Convert.ToInt32(Console.ReadLine()) - 1;
 
-                    if(delete >= actualGame)
+                    if(delete >= currentGame)
                         Console.WriteLine("Wrong number");
                     else
                     {
@@ -316,21 +351,21 @@ public class ComputerGames
 
                         if(confirmation == "y")
                         {
-                            for(int i = delete; i < actualGame; i++)
+                            for(int i = delete; i < currentGame; i++)
                             {
                                 g[i] = g[i + 1];
                             }
 
-                            actualGame--;
+                            currentGame--;
                         }
                     }
 
                     Console.WriteLine();
                     break;
                 case SORT:
-                    for(int i = 0; i < actualGame - 1; i++)
+                    for(int i = 0; i < currentGame - 1; i++)
                     {
-                        for(int j = i + 1; j < actualGame; j++)
+                        for(int j = i + 1; j < currentGame; j++)
                         {
                             if(g[i].title.CompareTo(g[j].title) > 0)
                             {
@@ -353,7 +388,7 @@ public class ComputerGames
                     Console.WriteLine();
                     break;
                 case TRIM:
-                    for(int i = 0; i < actualGame; i++)
+                    for(int i = 0; i < currentGame; i++)
                     {
                         g[i].title = g[i].title.Trim();
                         while(g[i].title.Contains("  "))
@@ -386,6 +421,6 @@ public class ComputerGames
                     Console.WriteLine();
                     break;
             }
-        } while (option != "Q");
+        } while (option != EXIT);
     }
 }
