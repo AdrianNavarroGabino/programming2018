@@ -14,9 +14,9 @@ public class FunctionObtenerDigitos
         
         while(num != 0)
         {
-            num /= 10;
             if(num < 10 && num > 0)
                 CMS = num;
+            num /= 10;
             count++;
         }
         
