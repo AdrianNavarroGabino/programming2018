@@ -10,13 +10,13 @@ class Vehicle
     
     protected int speed;
     
-    public void setBrand(string b) { brand = b; }
-    public void setModel(string m) { model = m; }
-    public void setPower(double p) { power = p; }
+    public void SetBrand(string b) { brand = b; }
+    public void SetModel(string m) { model = m; }
+    public void SetPower(double p) { power = p; }
     
-    public string getBrand() { return brand; }
-    public string getModel() { return model; }
-    public double getPower() { return power; }
+    public string GetBrand() { return brand; }
+    public string GetModel() { return model; }
+    public double GetPower() { return power; }
     
     public Vehicle(string newBrand, string newModel, double newPower)
     {
@@ -62,8 +62,8 @@ class Car : Vehicle
 {
     private byte doors;
     
-    public void setDoors(byte d) { doors = d; }
-    public byte setDoors() { return doors; }
+    public void SetDoors(byte d) { doors = d; }
+    public byte GetDoors() { return doors; }
     
     public Car(string newBrand, string newModel, double newPower,
         byte newDoors)
