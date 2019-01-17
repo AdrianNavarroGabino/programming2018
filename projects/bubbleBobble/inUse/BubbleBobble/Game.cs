@@ -9,54 +9,59 @@ using System.Threading.Tasks;
 
 class Game
 {
+    /*
     struct typeEnemy
     {
         public int x;
         public int y;
         public int speed;
     }
+    */
 
-    static bool fullScreen;
-
-    static Image player;
-    static int playerX, playerY, playerSpeed;
-    static int playerWidth, playerHeight;
+    //static Image player;
+    //static int playerX, playerY, playerSpeed;
+    //static int playerWidth, playerHeight;
+    static Player player;
 
     static int numEnemies;
-    static Image enemy;
-    static int enemyWidth;
-    static int enemyHeight;
-    static typeEnemy[] enemies;
+    //static Image enemy;
+    //static int enemyWidth;
+    //static int enemyHeight;
+    static Enemy[] enemies;
 
     static bool finished;
 
         
     public static void Init()
     {
-            
 
-        player = new Image("data/player.png");
-        playerX = 50;
-        playerY = 120;
-        playerSpeed = 8;
-        playerWidth = 32;
-        playerHeight = 64;
+
+        //player = new Image("data/player.png");
+        //playerX = 50;
+        //playerY = 120;
+        //playerSpeed = 8;
+        //playerWidth = 32;
+        //playerHeight = 64;
+        player = new Player();
 
         numEnemies = 2;
-        enemies = new typeEnemy[numEnemies];
+        enemies = new Enemy[numEnemies];
             
-        enemy = new Image("data/enemy.png");
-        enemyWidth = 64;
-        enemyHeight = 64;
+        //enemy = new Image("data/enemy.png");
+        //enemyWidth = 64;
+        //enemyHeight = 64;
+        for(int i = 0; i < numEnemies; i++)
+        {
+            enemies[i] = new Enemy();
+        }
 
         finished = false;
 
         Random rnd = new Random();
         for (int i = 0; i < numEnemies; i++)
         {
-            enemies[i].x = rnd.Next(200, 800);
-            enemies[i].y = rnd.Next(50, 600);
-            enemies[i].speed = rnd.Next(1, 5);
+            enemies[i].MoveTo(rnd.Next(200, 800), rnd.Next(50, 600));
+            enemies[i].SetSpeed(rnd.Next(1, 5), rnd.Next(1, 5));
         }
     }
 
@@ -70,22 +75,28 @@ class Game
             0xCC, 0xCC, 0xCC,
             font18);
 
-        SdlHardware.DrawHiddenImage(player, playerX, playerY);
+        //SdlHardware.DrawHiddenImage(player, playerX, playerY);
+        player.DrawOnHiddenScreen();
         for (int i = 0; i < numEnemies; i++)
-            SdlHardware.DrawHiddenImage(enemy, enemies[i].x, enemies[i].y);
+            //SdlHardware.DrawHiddenImage(enemy, enemies[i].x, enemies[i].y);
+            enemies[i].DrawOnHiddenScreen();
         SdlHardware.ShowHiddenScreen();
     }
 
     static void CheckUserInput()
     {
         if (SdlHardware.KeyPressed(SdlHardware.KEY_RIGHT))
-            playerX += playerSpeed;
+            //playerX += playerSpeed;
+            player.MoveRight();
         if (SdlHardware.KeyPressed(SdlHardware.KEY_LEFT))
-            playerX -= playerSpeed;
+            //playerX -= playerSpeed;
+            player.MoveLeft();
         if (SdlHardware.KeyPressed(SdlHardware.KEY_UP))
-            playerY -= playerSpeed;
+            //playerY -= playerSpeed;
+            player.MoveUp();
         if (SdlHardware.KeyPressed(SdlHardware.KEY_DOWN))
-            playerY += playerSpeed;
+            //playerY += playerSpeed;
+            player.MoveDown();
 
         if (SdlHardware.KeyPressed(SdlHardware.KEY_ESC))
             finished = true;
