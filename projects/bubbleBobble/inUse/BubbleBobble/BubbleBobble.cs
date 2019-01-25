@@ -6,20 +6,25 @@ using System.Threading.Tasks;
 
 class BubbleBobble
 {
-    public void Run()
-    {
-        // TO DO
-    }
-
     public static void Main()
     {
         bool fullScreen = false;
         SdlHardware.Init(1024, 720, 24, fullScreen);
 
         WelcomeScreen w = new WelcomeScreen();
-        w.Run();
-
-        Game g = new Game();
-        g.Run();
+        do
+        {
+            w.Run();
+            if (w.GetChosenOption() == 1)
+            {
+                Game g = new Game();
+                g.Run();
+            }
+            else if (w.GetChosenOption() == 2)
+            {
+                CreditsScreen credits = new CreditsScreen();
+                credits.Run();
+            }
+        } while (w.GetChosenOption() != 3);
     }
 }
