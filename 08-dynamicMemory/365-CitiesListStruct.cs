@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-public class CitiesArrayList
+public class CitiesListStruct
 {
     struct City
     {
