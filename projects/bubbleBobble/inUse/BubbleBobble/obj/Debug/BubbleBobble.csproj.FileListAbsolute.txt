@@ -22,3 +22,11 @@ C:\Users\adnag\Desktop\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.csproj.C
 C:\Users\adnag\Desktop\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.csproj.CopyComplete
 C:\Users\adnag\Desktop\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.exe
 C:\Users\adnag\Desktop\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.pdb
+C:\Users\Adrián Navarro\Desktop\BubbleBobble\BubbleBobble\bin\Debug\BubbleBobble.exe.config
+C:\Users\Adrián Navarro\Desktop\BubbleBobble\BubbleBobble\bin\Debug\BubbleBobble.exe
+C:\Users\Adrián Navarro\Desktop\BubbleBobble\BubbleBobble\bin\Debug\BubbleBobble.pdb
+C:\Users\Adrián Navarro\Desktop\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.csprojAssemblyReference.cache
+C:\Users\Adrián Navarro\Desktop\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.csproj.CoreCompileInputs.cache
+C:\Users\Adrián Navarro\Desktop\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.csproj.CopyComplete
+C:\Users\Adrián Navarro\Desktop\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.exe
+C:\Users\Adrián Navarro\Desktop\BubbleBobble\BubbleBobble\obj\Debug\BubbleBobble.pdb
