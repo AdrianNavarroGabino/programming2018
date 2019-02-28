@@ -36,8 +36,12 @@ class WelcomeScreen
             30, 330,
             0xA0, 0xA0, 0xA0,
             font24);
-        SdlHardware.WriteHiddenText("Q. Quit",
+        SdlHardware.WriteHiddenText("3. Help",
             30, 370,
+            0x80, 0x80, 0x80,
+            font24);
+        SdlHardware.WriteHiddenText("Q. Quit",
+            30, 410,
             0x80, 0x80, 0x80,
             font24);
         SdlHardware.ShowHiddenScreen();
@@ -52,9 +56,13 @@ class WelcomeScreen
             {
                 option = 2;
             }
-            if (SdlHardware.KeyPressed(SdlHardware.KEY_Q))
+            if (SdlHardware.KeyPressed(SdlHardware.KEY_3))
             {
                 option = 3;
+            }
+            if (SdlHardware.KeyPressed(SdlHardware.KEY_Q))
+            {
+                option = 4;
             }
             SdlHardware.Pause(100); // To avoid using 100% CPU
         }

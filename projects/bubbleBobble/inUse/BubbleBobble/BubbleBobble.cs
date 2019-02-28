@@ -25,6 +25,11 @@ class BubbleBobble
                 CreditsScreen credits = new CreditsScreen();
                 credits.Run();
             }
-        } while (w.GetChosenOption() != 3);
+            else if (w.GetChosenOption() == 3)
+            {
+				HelpScreen help = new HelpScreen();
+				help.Run();	
+			}
+        } while (w.GetChosenOption() != 4);
     }
 }
