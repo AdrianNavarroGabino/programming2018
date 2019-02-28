@@ -29,15 +29,15 @@ class WelcomeScreen
         SdlHardware.ClearScreen();
         SdlHardware.DrawHiddenImage(welcome, 100, 0);
         SdlHardware.WriteHiddenText("1. Play",
-            490, 590,
+            30, 290,
             0xC0, 0xC0, 0xC0,
             font24);
         SdlHardware.WriteHiddenText("2. Credits",
-            490, 630,
+            30, 330,
             0xA0, 0xA0, 0xA0,
             font24);
         SdlHardware.WriteHiddenText("Q. Quit",
-            490, 670,
+            30, 370,
             0x80, 0x80, 0x80,
             font24);
         SdlHardware.ShowHiddenScreen();
