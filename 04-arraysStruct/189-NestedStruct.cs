@@ -4,44 +4,43 @@ using System;
 
 public class NestedStruct
 {
+    struct person
+    {
+        public string name;
+        public date birth;
+    }
     struct date
     {
         public int day;
         public int month;
         public int year;
     }
-
-    struct person
-    {
-        public string name;
-        public date birthday;
-    }
-
+    
     public static void Main()
     {
-        const int SIZE = 1000;
-        person[] people = new person[SIZE];
-
-        for (int i = 0; i < 2; i++)
+        person[] p = new person[2];
+        
+        for(int i = 0; i < 2; i++)
         {
-            Console.Write("Enter the name for person {0}:", i+1 );
-            people[i].name = Console.ReadLine();
-
-            Console.Write("Enter the birthday (1-day) for person {0}:", i + 1);
-            people[i].birthday.day = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter the birthday (2-month) for person {0}:", i + 1);
-            people[i].birthday.month = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter the birthday (3-year) for person {0}:", i + 1);
-            people[i].birthday.year = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the name of person {0}: ", i+1);
+            p[i].name = Console.ReadLine();
+            Console.Write("Enter the day of his/her birth: ");
+            p[i].birth.day = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the month of his/her birth: ");
+            p[i].birth.month = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the year of his/her birth: ");
+            p[i].birth.year = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
         }
-
-        for (int i = 0; i < 2; i++)
+        
+        for(int i = 0; i < 2; i++)
         {
-            Console.WriteLine("Name: "+ people[i].name);
-            Console.WriteLine("Birthday: " +
-                people[i].birthday.day +"/"+ 
-                people[i].birthday.month + "/" +
-                people[i].birthday.year);
+            Console.WriteLine("Person {0}", i+1);
+            Console.WriteLine("Name: {0}", p[i].name);
+            Console.WriteLine("Day of birth: {0}", p[i].birth.day);
+            Console.WriteLine("Month of birth: {0}", p[i].birth.month);
+            Console.WriteLine("Year of birth: {0}", p[i].birth.year);
+            Console.WriteLine();
         }
     }
 }
