@@ -40,8 +40,12 @@ class WelcomeScreen
             30, 370,
             0x80, 0x80, 0x80,
             font24);
-        SdlHardware.WriteHiddenText("Q. Quit",
+        SdlHardware.WriteHiddenText("4. ScoreBoard",
             30, 410,
+            0x80, 0x80, 0x80,
+            font24);
+        SdlHardware.WriteHiddenText("Q. Quit",
+            30, 450,
             0x80, 0x80, 0x80,
             font24);
         SdlHardware.ShowHiddenScreen();
@@ -60,9 +64,13 @@ class WelcomeScreen
             {
                 option = 3;
             }
-            if (SdlHardware.KeyPressed(SdlHardware.KEY_Q))
+            if (SdlHardware.KeyPressed(SdlHardware.KEY_4))
             {
                 option = 4;
+            }
+            if (SdlHardware.KeyPressed(SdlHardware.KEY_Q))
+            {
+                option = 5;
             }
             SdlHardware.Pause(100); // To avoid using 100% CPU
         }

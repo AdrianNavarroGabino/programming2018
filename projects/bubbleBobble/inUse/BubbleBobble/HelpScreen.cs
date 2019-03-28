@@ -4,7 +4,7 @@
 
     public void Run()
     {
-        Font font24 = new Font("data/Joystix.ttf", 18);
+        font24 = new Font("data/Joystix.ttf", 18);
         SdlHardware.ClearScreen();
         // SdlHardware.DrawHiddenImage();
         SdlHardware.WriteHiddenText("LEFT and RIGHT arrows to move",

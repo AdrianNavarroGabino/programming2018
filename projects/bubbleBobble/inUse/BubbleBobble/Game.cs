@@ -14,7 +14,7 @@ class Game
     protected bool finished;
     protected Font font18;
 
-        
+
     public Game()
     {
         player = new Player();
@@ -73,6 +73,8 @@ class Game
 
         for (int i = 0; i < room.NumEnemies; i++)
             room.Enemies[i].Move();
+        if (SdlHardware.KeyPressed(SdlHardware.KEY_SPC))
+            player.Shot();
     }
 
     void CheckGameStatus()
@@ -89,7 +91,6 @@ class Game
 
     void UpdateHighscore()
     {
-        // TODO
     }
 
     public void Run()
@@ -105,6 +106,8 @@ class Game
         while (!finished);
 
         UpdateHighscore();
+        ScoreBoard sb = new ScoreBoard();
+        sb.Run();
     }
 }
 

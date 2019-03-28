@@ -30,6 +30,11 @@ class BubbleBobble
 				HelpScreen help = new HelpScreen();
 				help.Run();	
 			}
-        } while (w.GetChosenOption() != 4);
+            else if (w.GetChosenOption() == 4)
+            {
+                ScoreBoard sb = new ScoreBoard();
+                sb.Run();
+            }
+        } while (w.GetChosenOption() != 5);
     }
 }
